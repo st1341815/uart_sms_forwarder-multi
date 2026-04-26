@@ -1,0 +1,54 @@
+database:
+  enabled: true
+  type: sqlite
+  sqlite:
+    path: "./data/app.db"
+  show_sql: false
+log:
+  level: info # 日志等级  debug,info,waring,error
+  filename: ./logs/sms.log
+
+server:
+  addr: "0.0.0.0:8080"
+  ip_extractor: "X-Real-IP"
+
+App:
+  # JWT配置
+  JWT:
+    # 随机生成一个 32 字节的字符串，推荐使用 openssl rand -base64 32 生成
+    Secret: ""
+    ExpiresHours: 168 # 7天
+  Users:
+    # 使用 Bcrypt 加密，默认密码为 admin123，建议首次登录后修改密码
+    admin: "$2y$12$7DXcOiX1D59xNTIn5riUKusAPLP88LxxoczWmUT83MBj5EFznbp8a"
+  OIDC:
+    Enabled: false
+    Issuer: ""
+    ClientID: ""
+    ClientSecret: ""
+    RedirectURL: "http://localhost:8080/oidc/callback"
+
+  # 串口配置（多设备支持）
+  Serial:
+    Devices:
+      # SMS1 - 英国漫游卡
+      - ID: "sms1"
+        Name: "英国漫游卡"
+        Port: "/dev/ttyACM2"
+        Description: "O2 UK Roaming"
+        Enabled: true
+      # SMS2 - 联通 151
+      - ID: "sms2"
+        Name: "联通151"
+        Port: "/dev/ttyACM8"
+        Description: "联通号码"
+        Enabled: true
+      # SMS3 - 移动 180
+      - ID: "sms3"
+        Name: "移动180"
+        Port: "/dev/ttyACM5"
+        Description: "移动号码"
+        Enabled: true
+
+    # 兼容旧配置（单设备模式）
+    # Port: "/dev/ttyACM0"  # 如果不使用 Devices，可以指定单个 Port

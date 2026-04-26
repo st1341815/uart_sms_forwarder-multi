@@ -1,0 +1,20 @@
+# Build artifacts
+uart_sms_forwarder
+uart_sms_forwarder_v*
+
+# Dependencies
+node_modules/
+
+# Logs
+*.log
+logs/
+
+# Data
+data/
+*.db
+
+# Config (keep example)
+config.yaml
+
+# OS
+.DS_Store
