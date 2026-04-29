@@ -1,0 +1,16 @@
+# runtime
+logs/
+data/
+*.log
+
+# local backups
+*.bak.*
+*.by-path.*
+
+# secrets
+config.yaml
+
+# OS
+.DS_Store
+__pycache__/
+*.pyc

@@ -1,0 +1,40 @@
+database:
+  enabled: true
+  type: sqlite
+  sqlite:
+    path: ./data/app.db
+  show_sql: false
+log:
+  level: info
+  filename: ./logs/sms.log
+
+server:
+  addr: 0.0.0.0:8080
+  ip_extractor: X-Real-IP
+
+App:
+  JWT:
+    Secret: ***REDACTED***
+    ExpiresHours: 168
+  Users:
+    admin: ***REDACTED_HASH***
+  OIDC:
+    Enabled: false
+
+  Serial:
+    Devices:
+      - ID: sms1
+        Name: 移动1111
+        Port: /dev/ttyACM8
+        Description: 中国移动 18055961111
+        Enabled: true
+      - ID: sms2
+        Name: O2UK3728
+        Port: /dev/ttyACM2
+        Description: O2 UK Roaming
+        Enabled: true
+      - ID: sms3
+        Name: 联通3113
+        Port: /dev/ttyACM5
+        Description: 中国联通 15105513113
+        Enabled: true
