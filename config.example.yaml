@@ -5,7 +5,7 @@ database:
     path: "./data/app.db"
   show_sql: false
 log:
-  level: info # 日志等级  debug,info,waring,error
+  level: info # debug,info,warning,error
   filename: ./logs/sms.log
 
 server:
@@ -13,14 +13,13 @@ server:
   ip_extractor: "X-Real-IP"
 
 App:
-  # JWT配置
   JWT:
-    # 随机生成一个 32 字节的字符串，推荐使用 openssl rand -base64 32 生成
-    Secret: ""
+    # 随机生成一个 32 字节字符串（示例已脱敏）
+    Secret: "***REDACTED***"
     ExpiresHours: 168 # 7天
   Users:
-    # 使用 Bcrypt 加密，默认密码为 admin123，建议首次登录后修改密码
-    admin: "$2y$12$7DXcOiX1D59xNTIn5riUKusAPLP88LxxoczWmUT83MBj5EFznbp8a"
+    # 使用 Bcrypt 加密（示例已脱敏）
+    admin: "***REDACTED_HASH***"
   OIDC:
     Enabled: false
     Issuer: ""
@@ -31,24 +30,21 @@ App:
   # 串口配置（多设备支持）
   Serial:
     Devices:
-      # SMS1 - 英国漫游卡
       - ID: "sms1"
-        Name: "英国漫游卡"
-        Port: "/dev/ttyACM2"
+        Name: "移动1111"
+        Port: "/dev/ttyACM8"   # 或 /dev/newsms_cmcc
+        Description: "中国移动 180xxxx1111"
+        Enabled: true
+      - ID: "sms2"
+        Name: "O2UK3728"
+        Port: "/dev/ttyACM2"   # 或 /dev/newsms_o2
         Description: "O2 UK Roaming"
         Enabled: true
-      # SMS2 - 联通 151
-      - ID: "sms2"
-        Name: "联通151"
-        Port: "/dev/ttyACM8"
-        Description: "联通号码"
-        Enabled: true
-      # SMS3 - 移动 180
       - ID: "sms3"
-        Name: "移动180"
-        Port: "/dev/ttyACM5"
-        Description: "移动号码"
+        Name: "联通3113"
+        Port: "/dev/ttyACM5"   # 或 /dev/newsms_cu
+        Description: "中国联通 151xxxx3113"
         Enabled: true
 
     # 兼容旧配置（单设备模式）
-    # Port: "/dev/ttyACM0"  # 如果不使用 Devices，可以指定单个 Port
+    # Port: "/dev/ttyACM0"

@@ -5,15 +5,21 @@ uart_sms_forwarder_v*
 # Dependencies
 node_modules/
 
-# Logs
-*.log
+# Runtime
 logs/
-
-# Data
 data/
+*.log
 *.db
 
-# Config (keep example)
+# Python
+__pycache__/
+*.pyc
+
+# Local backups
+*.bak.*
+*.by-path.*
+
+# Secrets (keep example)
 config.yaml
 
 # OS
