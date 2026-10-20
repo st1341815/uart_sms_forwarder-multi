@@ -1,6 +1,7 @@
 # UART SMS Forwarder - Multi Device
 
 多设备短信转发系统，支持同时管理多个 USB SIM 卡设备。
+Air780 短信UART转发器
 
 ## 功能特性
 
